@@ -1,5 +1,0 @@
-D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Demo\bin\Debug\FilesConverter.Demo.exe.config
-D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Demo\bin\Debug\FilesConverter.Demo.exe
-D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Demo\bin\Debug\FilesConverter.Demo.pdb
-D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Demo\obj\Debug\FilesConverter.Demo.exe
-D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Demo\obj\Debug\FilesConverter.Demo.pdb
