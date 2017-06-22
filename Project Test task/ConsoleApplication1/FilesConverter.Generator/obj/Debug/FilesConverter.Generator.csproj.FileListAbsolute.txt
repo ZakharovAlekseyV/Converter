@@ -1,0 +1,5 @@
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Generator\bin\Debug\FilesConverter.Generator.exe.config
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Generator\bin\Debug\FilesConverter.Generator.exe
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Generator\bin\Debug\FilesConverter.Generator.pdb
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Generator\obj\Debug\FilesConverter.Generator.exe
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Generator\obj\Debug\FilesConverter.Generator.pdb

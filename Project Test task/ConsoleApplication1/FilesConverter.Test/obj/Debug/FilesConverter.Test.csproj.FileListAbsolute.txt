@@ -1,0 +1,4 @@
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Test\bin\Debug\FilesConverter.Test.dll
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Test\bin\Debug\FilesConverter.Test.pdb
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Test\obj\Debug\FilesConverter.Test.dll
+D:\Project\Local resository (converter)\Project Test task\ConsoleApplication1\FilesConverter.Test\obj\Debug\FilesConverter.Test.pdb
