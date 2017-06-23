@@ -31,7 +31,7 @@ namespace FilesConverter
             static void Main(string[] args)
         {
             TradeRecord traderecord = new TradeRecord ( 1, 2, 3.5, "good" );
-            Console.WriteLine("Укажите путь для создаваемого бинарного файла (например: D/Project/..) :");
+            Console.WriteLine("Укажите путь для создаваемого бинарного файла (например: D/Project/..) : Михаил привет!");
             try
             {
                 string path = Console.ReadLine();
