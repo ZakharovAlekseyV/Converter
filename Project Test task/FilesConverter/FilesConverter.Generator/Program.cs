@@ -25,19 +25,14 @@ namespace FilesConverter.Generator
             var options = new Options();
             if (!Parser.Default.ParseArguments(args, options))
                 Console.WriteLine("Invalid arguments. Press any key for exit");
-
-            /*Console.WriteLine($"Output: {options.Output}");
-            Console.WriteLine($"Number: {options.Number}");
-            Console.ReadKey();*/
-
-            //TradeRecord traderecord = new TradeRecord();
+            int numberСonvert = Convert.ToInt32(options.Number);
 
             Random randomId = new Random(DateTime.Now.Millisecond);
             Random randomAccount = new Random(DateTime.Now.Millisecond);
             Random randomVolume = new Random(DateTime.Now.Millisecond);
             Random randomComment = new Random();
 
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < numberСonvert; j++)
             {
                 int tempId = randomId.Next(255);
                 Console.WriteLine(tempId);
@@ -57,20 +52,16 @@ namespace FilesConverter.Generator
                 Console.WriteLine(random);
             }
             Console.ReadLine();
-
-
-
-
-            int numberconvert = Convert.ToInt32(options.Number);
-            for (int i=0; i < numberconvert; i++)
-            {
-
-            }
-
+         
             using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.OpenOrCreate)))
             {
 
             }
+            /*Console.WriteLine($"Output: {options.Output}");
+            Console.WriteLine($"Number: {options.Number}");
+            Console.ReadKey();*/
+
+            //TradeRecord traderecord = new TradeRecord();
         }
     }
 }
