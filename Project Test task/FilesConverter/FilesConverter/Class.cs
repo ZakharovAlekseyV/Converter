@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,24 +27,12 @@ namespace FilesConverter
             }
         } 
         
-        class Program
+        class Class
         { 
             static void Main(string[] args)
-        {
-            TradeRecord traderecord = new TradeRecord ( 1, 2, 3.5, "good" );
-            Console.WriteLine("Укажите путь для создаваемого бинарного файла (например: D/Project/..) : Михаил привет!");
-            try
             {
-                string path = Console.ReadLine();
-                Console.WriteLine(path);
-                Console.ReadKey();
+            
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.ReadKey();
-            }
-        }
 
         }
 }
