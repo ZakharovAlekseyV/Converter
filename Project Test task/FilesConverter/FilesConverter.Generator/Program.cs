@@ -26,40 +26,55 @@ namespace FilesConverter.Generator
             if (!Parser.Default.ParseArguments(args, options))
                 Console.WriteLine("Invalid arguments. Press any key for exit");
             int numberСonvert = Convert.ToInt32(options.Number);
+            Console.WriteLine($"Output: {options.Output}");
+            Console.WriteLine($"Number: {options.Number}");
 
             Random randomId = new Random(DateTime.Now.Millisecond);
             Random randomAccount = new Random(DateTime.Now.Millisecond);
             Random randomVolume = new Random(DateTime.Now.Millisecond);
             Random randomComment = new Random();
 
-            for (int j = 0; j < numberСonvert; j++)
+            try
             {
-                int tempId = randomId.Next(255);
-                Console.WriteLine(tempId);
-
-                int tempAccount = randomAccount.Next(255);
-                Console.WriteLine(tempAccount);
-
-                double tempVolume = Convert.ToDouble(randomVolume.Next(-100, 100) / 10.0);
-                Console.WriteLine(tempVolume);
-
-                string random = string.Empty;
-                for (int i = 0; i < 6; i++)
+                using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.OpenOrCreate)))
                 {
-                    random += (char)randomComment.Next('a', 'z');
+                    for (int j = 0; j < numberСonvert; j++)
+                    {
+                        int tempId = randomId.Next(255);
+                        Console.WriteLine(tempId);
+                        writer.Write(tempId);
+
+                        int tempAccount = randomAccount.Next(255);
+                        Console.WriteLine(tempAccount);
+                        writer.Write(tempAccount);
+
+                        double tempVolume = Convert.ToDouble(randomVolume.Next(-100, 100) / 10.0);
+                        Console.WriteLine(tempVolume);
+                        writer.Write(tempVolume);
+
+                        string random = string.Empty;
+                        for (int i = 0; i < 6; i++)
+                        {
+                            random += (char)randomComment.Next('a', 'z');
+                        }
+
+                        Console.WriteLine(random);
+                        writer.Write(random);
+
+                    }
+                   
+                                        
                 }
-
-                Console.WriteLine(random);
+                Console.ReadLine();
             }
-            Console.ReadLine();
-         
-            using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.OpenOrCreate)))
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
-            /*Console.WriteLine($"Output: {options.Output}");
-            Console.WriteLine($"Number: {options.Number}");
-            Console.ReadKey();*/
+
+
+
+            Console.ReadKey();
 
             //TradeRecord traderecord = new TradeRecord();
         }
