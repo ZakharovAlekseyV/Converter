@@ -33,40 +33,28 @@ namespace FilesConverter.Generator
             Random randomAccount = new Random(DateTime.Now.Millisecond);
             Random randomVolume = new Random(DateTime.Now.Millisecond);
             Random randomComment = new Random();
+            int tempId, tempAccount;
+            double tempVolume;
+            string tempComment, traderecord;
 
             try
             {
                 using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.OpenOrCreate)))
                 {
-                    for (int j = 0; j < numberСonvert; j++)
+                    for (int i = 0; i < numberСonvert; i++)
                     {
-                        int tempId = randomId.Next(255);
-                        Console.WriteLine(tempId);
+                        TradeRecord tradeRecord = new TradeRecord(tempId = randomId.Next(255), tempAccount = randomAccount.Next(255), tempVolume = randomVolume.Next(-100, 100) / 10.0, tempComment = $"{tempId}  {tempAccount}  {tempVolume}");
                         writer.Write(tempId);
-
-                        int tempAccount = randomAccount.Next(255);
-                        Console.WriteLine(tempAccount);
                         writer.Write(tempAccount);
-
-                        double tempVolume = Convert.ToDouble(randomVolume.Next(-100, 100) / 10.0);
-                        Console.WriteLine(tempVolume);
                         writer.Write(tempVolume);
+                        writer.Write(tempComment);
 
-                        string random = string.Empty;
-                        for (int i = 0; i < 6; i++)
-                        {
-                            random += (char)randomComment.Next('a', 'z');
-                        }
-
-                        Console.WriteLine(random);
-                        writer.Write(random);
-
+                        traderecord = string.Format("{0} {1} {2} {3}", tempId, tempAccount, tempVolume, $"{tempId}  {tempAccount}  {tempVolume}");
+                        Console.WriteLine(traderecord);
                     }
-                   
-                                        
                 }
-                Console.ReadLine();
             }
+
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -74,9 +62,22 @@ namespace FilesConverter.Generator
 
 
 
-            Console.ReadKey();
 
-            //TradeRecord traderecord = new TradeRecord();
+            /*using (FileStream fstream = File.OpenRead(options.Output))
+            {
+                // преобразуем строку в байты
+                byte[] array = new byte[fstream.Length];
+                // считываем данные
+                fstream.Read(array, 0, array.Length);
+                // декодируем байты в строку
+                string textFromFile = System.Text.Encoding.Default.GetString(array);
+                Console.WriteLine("Текст из файла: {0}", textFromFile);
+
+            } */
+            Console.ReadLine();
+
+            
+            
         }
     }
 }
