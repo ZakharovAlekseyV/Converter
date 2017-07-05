@@ -60,7 +60,7 @@ namespace FilesConverter.Generator
                         writer.Write(tempComment);
 
                         traderecord = string.Format("{0} {1} {2} {3}", tempId, tempAccount, tempVolume, $"{tempId}  {tempAccount}  {tempVolume}");
-                        Console.WriteLine(traderecord);
+                       // Console.WriteLine(traderecord);
                     }
                     
                 }
