@@ -60,14 +60,14 @@ namespace FilesConverter.Generator
                         writer.Write(tempComment);
 
                         traderecord = string.Format("{0} {1} {2} {3}", tempId, tempAccount, tempVolume, $"{tempId}  {tempAccount}  {tempVolume}");
-                       // Console.WriteLine(traderecord);
+                        Console.WriteLine(traderecord);
                     }
                     
                 }
 
 
-                string path = @"D:\Test\binary_file.dat";
-                using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
+                string path = @"D:\\binary_file.dat";
+                using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open),Encoding.ASCII))
                 {
                     while (reader.PeekChar() > -1)
                     {
@@ -76,8 +76,8 @@ namespace FilesConverter.Generator
                         Volume = reader.ReadDouble();
                         Comment = reader.ReadString();
 
-                        //TradeRecord tradeRecordW = new TradeRecord(Id, Account, Volume, Comment);
-                        //Console.WriteLine("{0}  {1}  {2}  {3} ", Id , Account, Volume, Comment);
+                        TradeRecord tradeRecordW = new TradeRecord(Id, Account, Volume, Comment);
+                        Console.WriteLine("{0}  {1}  {2}  {3} ", Id , Account, Volume, Comment);
                        
                     }
                 }
