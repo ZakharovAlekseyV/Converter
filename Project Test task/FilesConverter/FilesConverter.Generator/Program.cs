@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommandLine;
 using FilesConverter;
 using System.IO;
+using CsvHelper;
 
 
 namespace FilesConverter.Generator
@@ -36,11 +37,18 @@ namespace FilesConverter.Generator
             int tempId, tempAccount;
             double tempVolume;
             string tempComment, traderecord;
+            string writePath = @"D:\Project\CSV.csv";
+            int Id;
+            int Account;
+            double Volume;
+            string Comment;
 
             try
             {
+                File.WriteAllText(options.Output, "");
                 using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.OpenOrCreate)))
                 {
+                    
                     for (int i = 0; i < numberСonvert; i++)
                     {
                         TradeRecord tradeRecord = new TradeRecord(tempId = randomId.Next(255), tempAccount = randomAccount.Next(255), tempVolume = randomVolume.Next(-100, 100) / 10.0, tempComment = $"{tempId}  {tempAccount}  {tempVolume}");
@@ -52,7 +60,27 @@ namespace FilesConverter.Generator
                         traderecord = string.Format("{0} {1} {2} {3}", tempId, tempAccount, tempVolume, $"{tempId}  {tempAccount}  {tempVolume}");
                         Console.WriteLine(traderecord);
                     }
+                    
                 }
+
+
+                string path = @"D:\Test\binary_file.dat";
+                using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
+                {
+                    while (reader.PeekChar() > -1)
+                    {
+                        Id = reader.ReadInt32();
+                        Account = reader.ReadInt32();
+                        Volume = reader.ReadDouble();
+                        Comment = reader.ReadString();
+
+                        //TradeRecord tradeRecordW = new TradeRecord(Id, Account, Volume, Comment);
+                        //Console.WriteLine("{0}  {1}  {2}  {3} ", Id , Account, Volume, Comment);
+                       
+                    }
+                }
+
+               
             }
 
             catch (Exception e)
@@ -60,23 +88,14 @@ namespace FilesConverter.Generator
                 Console.WriteLine(e.Message);
             }
 
-
-
-
-            /*using (FileStream fstream = File.OpenRead(options.Output))
+           /* using (StreamWriter sw = new StreamWriter(writePath, false, Encoding.Default))
             {
-                // преобразуем строку в байты
-                byte[] array = new byte[fstream.Length];
-                // считываем данные
-                fstream.Read(array, 0, array.Length);
-                // декодируем байты в строку
-                string textFromFile = System.Text.Encoding.Default.GetString(array);
-                Console.WriteLine("Текст из файла: {0}", textFromFile);
-
-            } */
+                sw.Write(11);
+                sw.Write(22);
+                sw.Write(33);
+                sw.WriteLine("trololo");
+            }*/
             Console.ReadLine();
-
-            
             
         }
     }
