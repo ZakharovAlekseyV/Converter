@@ -21,6 +21,20 @@ namespace FilesConverter.Generator
 
     class Program
     {
+        static int RandomMethodInt (Random random)
+        {
+            random = new Random(DateTime.Now.Millisecond);
+            int temp = random.Next(255);
+            return temp;
+        }
+
+        static double RandomMethodDouble (Random random)
+        {
+            random = new Random(DateTime.Now.Millisecond);
+            double temp = random.Next(-100 , 100) /10.0;
+            return temp;
+        }
+
         static void Main(string[] args)
         {
             var options = new Options();
@@ -30,21 +44,13 @@ namespace FilesConverter.Generator
             Console.WriteLine($"Output: {options.Output}");
             Console.WriteLine($"Number: {options.Number}");
 
-            Random randomId = new Random(DateTime.Now.Millisecond);
-            Random randomAccount = new Random(DateTime.Now.Millisecond);
-            Random randomVolume = new Random(DateTime.Now.Millisecond);
-            Random randomComment = new Random();
-            int tempId, tempAccount;
+            Random randomId = null, randomAccount = null, randomVolume=null;
+            int Id, Account,tempId, tempAccount;
             double tempVolume;
-            string tempComment, traderecord;
+            string Comment, tempComment, traderecord;
             string writePath = @"D:\Project\CSV.csv";
-            int Id;
-            int Account;
             double Volume;
-            string Comment;
 
-
-            //Slava Hello!!
             try
             {
                 File.WriteAllText(options.Output, "");
@@ -53,20 +59,21 @@ namespace FilesConverter.Generator
                     
                     for (int i = 0; i < numberСonvert; i++)
                     {
-                        TradeRecord tradeRecord = new TradeRecord(tempId = randomId.Next(255), tempAccount = randomAccount.Next(255), tempVolume = randomVolume.Next(-100, 100) / 10.0, tempComment = $"{tempId}  {tempAccount}  {tempVolume}");
+                        TradeRecord tradeRecord = new TradeRecord (tempId = RandomMethodInt(randomId), tempAccount = RandomMethodInt(randomAccount),
+                                                                  tempVolume = RandomMethodDouble(randomVolume),
+                                                                  tempComment = $"{tempId}  {tempAccount}  {tempVolume}");
                         writer.Write(tempId);
                         writer.Write(tempAccount);
                         writer.Write(tempVolume);
                         writer.Write(tempComment);
 
-                        traderecord = string.Format("{0} {1} {2} {3}", tempId, tempAccount, tempVolume, $"{tempId}  {tempAccount}  {tempVolume}");
+                        traderecord = string.Format("{0} {1} {2} {3}", tempId, tempAccount, tempVolume,
+                                                    $"{tempId}  {tempAccount}  {tempVolume}");
                         Console.WriteLine(traderecord);
                     }
-                    
-                }
-
-
-                string path = @"D:\\binary_file.dat";
+                }   
+                
+                string path = @"D:\Test\trade.dat";
                 using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open),Encoding.ASCII))
                 {
                     while (reader.PeekChar() > -1)
@@ -78,11 +85,8 @@ namespace FilesConverter.Generator
 
                         TradeRecord tradeRecordW = new TradeRecord(Id, Account, Volume, Comment);
                         Console.WriteLine("{0}  {1}  {2}  {3} ", Id , Account, Volume, Comment);
-                       
                     }
                 }
-
-               
             }
 
             catch (Exception e)
