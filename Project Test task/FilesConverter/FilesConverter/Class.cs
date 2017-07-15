@@ -10,7 +10,7 @@ namespace FilesConverter
 {
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct TradeRecord
-        {
+        {   
             public int id;
             public int account;
             public double volume;
@@ -27,11 +27,11 @@ namespace FilesConverter
         } 
         
         class Class
-        { 
-            static void Main(string[] args)
-            {
-            
-            }
+        {
+       
+          static void Main(string[] args)
+          {
+          }
+      }      
+  }      
 
-        }
-}
