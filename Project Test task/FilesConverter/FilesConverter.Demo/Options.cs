@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using CommandLine;
 
-namespace FilesConverter.Generator
+namespace FilesConverter.Demo
 {
-    public class Options
+    class Options
     {
         [Option('o', "output", Required = true)]
         public string Output { get; set; }

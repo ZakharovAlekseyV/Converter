@@ -11,9 +11,9 @@ using CommandLine;
 
 namespace FilesConverter.Generator
 {
-    class Program
+    public class Program
     {
-        private static TradeRecord GetRandomTradeRecord ()
+        public static TradeRecord GetRandomTradeRecord ()
         {
             Random random = new Random(DateTime.Now.Millisecond);
             int id = random.Next(255);            
@@ -24,7 +24,7 @@ namespace FilesConverter.Generator
             return tradeRecord;
         }
         
-        private static Options GetOptions(string[] args)
+        public static Options GetOptions(string[] args)
         {
             Options options = new Options();
             if (!Parser.Default.ParseArguments(args, options))
@@ -35,10 +35,12 @@ namespace FilesConverter.Generator
             }
             Console.WriteLine($"Output: {options.Output}");
             Console.WriteLine($"Number: {options.Number}");
+            //Console.ReadLine();
             return options;
+            
         }
 
-        private static void WriterTradeRecord(Options options)
+        public static void WriterTradeRecord(Options options)
         {
             using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.Create, FileAccess.Write)))
             {
@@ -53,9 +55,9 @@ namespace FilesConverter.Generator
             }
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            try
+            /*try
             {
                 WriterTradeRecord(GetOptions(args));
             }
@@ -63,7 +65,7 @@ namespace FilesConverter.Generator
             {
                 Console.WriteLine(e.Message);
             }
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
     }
 }

@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IConvert.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilesConverter.Generator\FilesConverter.Generator.csproj">
+      <Project>{d3302abd-186a-4000-b601-bb3d5248ae62}</Project>
+      <Name>FilesConverter.Generator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FilesConverter\FilesConverter.csproj">
       <Project>{fd4bddb6-6b4a-46a2-93c5-3ec4e592a7ea}</Project>
       <Name>FilesConverter</Name>
