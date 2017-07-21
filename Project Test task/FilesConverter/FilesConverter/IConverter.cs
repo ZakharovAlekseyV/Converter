@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilesConverter.Demo
+namespace FilesConverter
 {
-    interface IConvert
+    public interface IConverter
     {
-        void Convert(string Output, string Input);
+        void Converter(string Output, string Input);
     }
 }

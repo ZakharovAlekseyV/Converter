@@ -26,10 +26,10 @@ namespace FilesConverter
             }
         } 
         
-        public class Class
+        public class ClassConverter : IConverter
         {
             static TradeRecord tr;
-            public static void Convert(string Output, string Input)
+            public void Converter(string Output, string Input)
             {
                 using (BinaryReader reader = new BinaryReader(File.Open(Output, FileMode.Open), Encoding.ASCII))
                 {

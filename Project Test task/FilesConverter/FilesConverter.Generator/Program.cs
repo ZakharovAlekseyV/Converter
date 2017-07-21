@@ -35,9 +35,7 @@ namespace FilesConverter.Generator
             }
             Console.WriteLine($"Output: {options.Output}");
             Console.WriteLine($"Number: {options.Number}");
-            //Console.ReadLine();
             return options;
-            
         }
 
         public static void WriterTradeRecord(Options options)
@@ -57,15 +55,7 @@ namespace FilesConverter.Generator
 
         public static void Main(string[] args)
         {
-            /*try
-            {
-                WriterTradeRecord(GetOptions(args));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            Console.ReadLine();*/
+            
         }
     }
 }

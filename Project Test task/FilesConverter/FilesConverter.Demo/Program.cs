@@ -11,16 +11,6 @@ using FilesConverter.Generator;
 
 namespace FilesConverter.Demo
 {
-    /*class Options
-    {
-        [Option('o', "output", Required = true)]
-        public string Output { get; set; }
-        [Option('n', "number", Required = true)]
-        public int Number { get; set; }
-        [Option ('i', "input",Required = true)]
-        public string Input { get; set; }
-    }*/
-
     class Program
     {
         private static Options GetOption(string[] args)
@@ -37,10 +27,16 @@ namespace FilesConverter.Demo
 
         static void Main(string[] args)
         {
-            Generator.Program.WriterTradeRecord(Generator.Program.GetOptions(args));
+            IConverter converter = new ClassConverter();
             string output = GetOption(args).Output;
             string input = GetOption(args).Input;
-            Class.Convert(output, input);
+            Generator.Program.WriterTradeRecord(Generator.Program.GetOptions(args));
+            converter.Converter(output, input);
+            
+            //Task task = Class.Convert();
+            //Console.WriteLine(task.Status);
+            
+            
         }
     }
 }
