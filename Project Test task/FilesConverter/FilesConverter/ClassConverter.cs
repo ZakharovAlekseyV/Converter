@@ -53,9 +53,17 @@ namespace FilesConverter
                         }
                     }
                 }
+            }
+            
+            public static void GetStatusTask (string output, string input)
+            {
+                var classConverter = new ClassConverter();
+                Task task = new Task(() => classConverter.Converter(output, input));
+                task.Start();
+                Console.WriteLine($"Статус задачи: {task.Status}");
                 Console.ReadLine();
             }
-           
+
             static void Main(string[] args)
             {
             }

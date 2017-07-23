@@ -13,6 +13,16 @@ namespace FilesConverter.Demo
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+            IConverter converter = new ClassConverter();
+            string output = GetOption(args).Output;
+            string input = GetOption(args).Input;
+            Generator.Program.WriterTradeRecord(Generator.Program.GetOptions(args));
+            //converter.Converter(output, input);
+            ClassConverter.GetStatusTask(output,input);
+        }
+
         private static Options GetOption(string[] args)
         {
             Options option = new Options();
@@ -23,20 +33,6 @@ namespace FilesConverter.Demo
                 Environment.Exit(-1);
             }
             return option;
-        }
-
-        static void Main(string[] args)
-        {
-            IConverter converter = new ClassConverter();
-            string output = GetOption(args).Output;
-            string input = GetOption(args).Input;
-            Generator.Program.WriterTradeRecord(Generator.Program.GetOptions(args));
-            converter.Converter(output, input);
-            
-            //Task task = Class.Convert();
-            //Console.WriteLine(task.Status);
-            
-            
         }
     }
 }
