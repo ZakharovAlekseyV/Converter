@@ -8,6 +8,7 @@ namespace FilesConverter
 {
     public interface IConverter
     {
-        void Converter(string Output, string Input);
+        void Converter(string output, string input);
+        
     }
 }

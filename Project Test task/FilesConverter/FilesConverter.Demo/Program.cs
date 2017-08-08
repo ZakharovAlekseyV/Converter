@@ -15,12 +15,11 @@ namespace FilesConverter.Demo
     {
         static void Main(string[] args)
         {
-            IConverter converter = new ClassConverter();
             string output = GetOption(args).Output;
             string input = GetOption(args).Input;
-            Generator.Program.WriterTradeRecord(Generator.Program.GetOptions(args));
-            //converter.Converter(output, input);
-            ClassConverter.GetStatusTask(output,input);
+            FilesConverter.Generator.Program.WriterTradeRecord(FilesConverter.Generator.Program.GetOptions(args));
+            IConverter ConverterBinaryToCSV = ConverterFactory.CreateConverter(ConvertationType.BinaryToCsv);
+            ConverterBinaryToCSV.Converter(output,input);
         }
 
         private static Options GetOption(string[] args)

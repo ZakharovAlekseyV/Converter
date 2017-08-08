@@ -42,20 +42,31 @@ namespace FilesConverter.Generator
         {
             using (BinaryWriter writer = new BinaryWriter(File.Open(options.Output, FileMode.Create, FileAccess.Write)))
             {
+                byte[] commentArray = new byte[64];
                 for (int i = 0; i < options.Number; i++)
                 {
                     TradeRecord tradeRecord = GetRandomTradeRecord();
                     writer.Write(tradeRecord.id);
                     writer.Write(tradeRecord.account);
                     writer.Write(tradeRecord.volume);
-                    writer.Write(tradeRecord.comment);
+                    CleanArray(commentArray);
+                    byte[] arr = Encoding.ASCII.GetBytes(tradeRecord.comment);
+                    arr.CopyTo(commentArray, 0);
+                    writer.Write(commentArray);
                 }
+            }
+        }
+
+        private static void CleanArray(byte[] commentArray)
+        {
+            for (int j = 0; j < commentArray.Length; ++j)
+            {
+                commentArray[j] = 0;
             }
         }
 
         public static void Main(string[] args)
         {
-            
         }
     }
 }

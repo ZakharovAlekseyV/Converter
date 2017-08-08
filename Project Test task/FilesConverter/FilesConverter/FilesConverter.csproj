@@ -64,7 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassConverter.cs" />
+    <Compile Include="ConverterBinaryToCsv.cs" />
+    <Compile Include="ConverterFactory.cs" />
     <Compile Include="IConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
