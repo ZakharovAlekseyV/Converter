@@ -29,7 +29,7 @@ namespace FilesConverter
     class ConverterBinaryToCsv : IConverter
     {
         static TradeRecord tr;
-        public void Converter(string output, string input)
+        public void Convert(string output, string input)
         {
             using (BinaryReader reader = new BinaryReader(File.Open(output, FileMode.Open), Encoding.ASCII))
             {
@@ -55,7 +55,7 @@ namespace FilesConverter
         public static void GetStatusTask (string output, string input)
         {
             var classConverter = new ConverterBinaryToCsv();
-            Task task = new Task(() => classConverter.Converter(output, input));
+            Task task = new Task(() => classConverter.Convert(output, input));
             task.Start();
             Console.WriteLine($"Статус задачи: {task.Status}");
             Console.ReadLine();

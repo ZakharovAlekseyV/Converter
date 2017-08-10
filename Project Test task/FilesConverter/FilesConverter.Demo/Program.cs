@@ -19,7 +19,12 @@ namespace FilesConverter.Demo
             string input = GetOption(args).Input;
             FilesConverter.Generator.Program.WriterTradeRecord(FilesConverter.Generator.Program.GetOptions(args));
             IConverter ConverterBinaryToCSV = ConverterFactory.CreateConverter(ConvertationType.BinaryToCsv);
-            ConverterBinaryToCSV.Converter(output,input);
+            Task task = new Task(() => ConverterBinaryToCSV.Convert(output, input));
+            task.Start();
+            
+            task.Wait();
+            Console.WriteLine($"Статус задачи:{task.Status}");
+            Console.ReadLine();
         }
 
         private static Options GetOption(string[] args)
