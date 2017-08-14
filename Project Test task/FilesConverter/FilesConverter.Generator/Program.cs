@@ -7,12 +7,14 @@ using FilesConverter;
 using System.IO;
 using CsvHelper;
 using CommandLine;
+using NLog;
 
 
 namespace FilesConverter.Generator
 {
     public class Program
     {
+        private static readonly ILogger Logger = LogManager.GetLogger(nameof(Program));
         public static TradeRecord GetRandomTradeRecord ()
         {
             Random random = new Random(DateTime.Now.Millisecond);
@@ -35,6 +37,8 @@ namespace FilesConverter.Generator
             }
             Console.WriteLine($"Output: {options.Output}");
             Console.WriteLine($"Number: {options.Number}");
+            Logger.Info("Output:" + options.Output);
+            Logger.Info("Number: " + options.Number);
             return options;
         }
 
