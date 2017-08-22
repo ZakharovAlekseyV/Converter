@@ -67,6 +67,7 @@
     <Compile Include="ConverterBinaryToCsv.cs" />
     <Compile Include="ConverterFactory.cs" />
     <Compile Include="IConverter.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

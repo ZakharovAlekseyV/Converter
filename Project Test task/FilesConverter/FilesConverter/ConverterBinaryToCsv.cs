@@ -28,6 +28,13 @@ namespace FilesConverter
     
     class ConverterBinaryToCsv : IConverter
     {
+        public ILogger _logger;
+
+        public ConverterBinaryToCsv(ILogger logger)
+        {
+            _logger = logger;
+        }
+
         static TradeRecord tr;
         public void Convert(string output, string input)
         {
@@ -50,16 +57,18 @@ namespace FilesConverter
                     }
                 }
             }
+             _logger ?.Info("Логирование из библиотеки");
         }
         
-        public static void GetStatusTask (string output, string input)
+        /*public void GetStatusTask (string output, string input)
         {
-            var classConverter = new ConverterBinaryToCsv();
+            var classConverter = new ConverterBinaryToCsv(_logger);
             Task task = new Task(() => classConverter.Convert(output, input));
             task.Start();
             Console.WriteLine($"Статус задачи: {task.Status}");
+            _logger.Info($"Статус задачи: {task.Status}");
             Console.ReadLine();
-        }
+        }*/
 
         static void Main(string[] args)
         {

@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace FilesConverter
 {
+    
     public enum ConvertationType
     {
         BinaryToCsv,
         CsvToBinary
     }
-    public static class ConverterFactory
+    public class ConverterFactory
     {
-        public static IConverter CreateConverter (ConvertationType type)
+        public ILogger ConverterFactoryLogger { get; set; }
+        
+        public IConverter CreateConverter (ConvertationType type)
         {
             switch (type)
             {
                 case ConvertationType.BinaryToCsv:
-                    return new ConverterBinaryToCsv();
+                    return new ConverterBinaryToCsv(ConverterFactoryLogger);
                 case ConvertationType.CsvToBinary:
                     throw new NotSupportedException();
                 default:

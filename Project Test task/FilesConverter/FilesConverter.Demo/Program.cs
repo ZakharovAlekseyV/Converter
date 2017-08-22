@@ -18,12 +18,17 @@ namespace FilesConverter.Demo
             string output = GetOption(args).Output;
             string input = GetOption(args).Input;
             FilesConverter.Generator.Program.WriterTradeRecord(FilesConverter.Generator.Program.GetOptions(args));
-            IConverter ConverterBinaryToCSV = ConverterFactory.CreateConverter(ConvertationType.BinaryToCsv);
+            ILogger log = new ConsoleLogger();
+            
+
+            ConverterFactory cf = new ConverterFactory();
+            cf.ConverterFactoryLogger = log;
+
+            IConverter ConverterBinaryToCSV = cf.CreateConverter(ConvertationType.BinaryToCsv);
             Task task = new Task(() => ConverterBinaryToCSV.Convert(output, input));
             task.Start();
             
             task.Wait();
-            Console.WriteLine($"Статус задачи:{task.Status}");
             Console.ReadLine();
         }
 
