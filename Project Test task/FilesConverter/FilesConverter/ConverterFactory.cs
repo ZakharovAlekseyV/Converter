@@ -14,14 +14,14 @@ namespace FilesConverter
     }
     public class ConverterFactory
     {
-        public ILogger ConverterFactoryLogger { get; set; }
+        public ILogger ConverterLogger { get; set; }
         
         public IConverter CreateConverter (ConvertationType type)
         {
             switch (type)
             {
                 case ConvertationType.BinaryToCsv:
-                    return new ConverterBinaryToCsv(ConverterFactoryLogger);
+                    return new ConverterBinaryToCsv(ConverterLogger);
                 case ConvertationType.CsvToBinary:
                     throw new NotSupportedException();
                 default:

@@ -18,12 +18,9 @@ namespace FilesConverter.Demo
             string output = GetOption(args).Output;
             string input = GetOption(args).Input;
             FilesConverter.Generator.Program.WriterTradeRecord(FilesConverter.Generator.Program.GetOptions(args));
-            ILogger log = new ConsoleLogger();
-            
-
+            ILogger log = new ConsoleLogger();// создал объект чтобы проинициализировать свойство
             ConverterFactory cf = new ConverterFactory();
-            cf.ConverterFactoryLogger = log;
-
+            cf.ConverterLogger = log;
             IConverter ConverterBinaryToCSV = cf.CreateConverter(ConvertationType.BinaryToCsv);
             Task task = new Task(() => ConverterBinaryToCSV.Convert(output, input));
             task.Start();

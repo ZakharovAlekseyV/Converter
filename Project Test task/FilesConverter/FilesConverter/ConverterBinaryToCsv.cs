@@ -28,14 +28,14 @@ namespace FilesConverter
     
     class ConverterBinaryToCsv : IConverter
     {
-        public ILogger _logger;
+        ILogger _logger;
 
         public ConverterBinaryToCsv(ILogger logger)
         {
             _logger = logger;
         }
 
-        static TradeRecord tr;
+        TradeRecord tr;
         public void Convert(string output, string input)
         {
             using (BinaryReader reader = new BinaryReader(File.Open(output, FileMode.Open), Encoding.ASCII))
@@ -48,16 +48,14 @@ namespace FilesConverter
                         tr.account = reader.ReadInt32();
                         tr.volume = reader.ReadDouble();
                         byte[] cmnt = reader.ReadBytes(64);
-                        tr.comment = Encoding.ASCII.GetString(cmnt); 
-                                                                        
-                        sw.Write(tr.id);
-                        sw.Write(tr.account);
-                        sw.Write(tr.volume);
-                        sw.WriteLine(tr.comment);
+                        tr.comment = Encoding.ASCII.GetString(cmnt);
+
+                        sw.Write(tr.id + ";" + tr.account + ";" + tr.volume + ";" + tr.comment +"\r\n" );
+
                     }
                 }
             }
-             _logger ?.Info("Логирование из библиотеки");
+             _logger?.Info("Логирование из библиотеки");
         }
         
         /*public void GetStatusTask (string output, string input)
